@@ -4,7 +4,7 @@
 **Visit the Calculator **
 
 ![calculator](https://user-images.githubusercontent.com/107030945/222140301-3332869b-be29-4d2f-82bc-a3cfd8cd6fe5.png)
-- [Demo Project](https://sama-babaee-web.github.io/Calculator/)
+- [Demo Project](https://sama-babaee-web.github.io/Calculator-/)
 
 - Developed by Sama Babaee 👻
 
