@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assest/scss/calculator.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="darkButton">
+            <div class="darkButton__indicator"></div>
+        </div>
+        <div class="calculator">
+            <div class="inputWrap">
+                <input class="inputWrap__result" type="text" readonly="readonly" />
+            </div>
+            <div class="buttonWrap">
+                <div class="buttonWrap__row clearfix">
+                    <div class="button _action" action="clear">AC</div>
+                    <div class="button _action" action="negate"></div>
+                    <div class="button _action" action="percent"></div>
+                    <div class="button _action" action="divide"></div>
+                </div>
+                <div class="buttonWrap__row clearfix">
+                    <div class="button _number" action="">7</div>
+                    <div class="button _number" action="">8</div>
+                    <div class="button _number" action="">9</div>
+                    <div class="button _action" action="multiplication"></div>
+                </div>
+                <div class="buttonWrap__row clearfix">
+                    <div class="button _number" action="">4</div>
+                    <div class="button _number" action="">5</div>
+                    <div class="button _number" action="">6</div>
+                    <div class="button _action" action="minus"></div>
+                </div>
+                <div class="buttonWrap__row clearfix">
+                    <div class="button _number" action="">1</div>
+                    <div class="button _number" action="">2</div>
+                    <div class="button _number" action="">3</div>
+                    <div class="button _action" action="plus"></div>
+                </div>
+                <div class="buttonWrap__row clearfix">
+                    <div class="button _number _double" action="">0</div>
+                    <div class="button _action" action="point">.</div>
+                    <div class="button _action" action="equality"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dark Theme
+        let container = document.querySelector('.container');
+        let themeButton = document.querySelector('.darkButton');
+
+        themeButton.onclick = function (event) {
+            this.classList.toggle("darkButton_dark");
+            container.classList.toggle("container_dark");
+        };
+
+        // Calculator
+        let result = document.querySelector("input.inputWrap__result");
+        let number = document.querySelectorAll("._number");
+        let equality = document.querySelector("._action[action=equality]");
+        let clear = document.querySelector("._action[action=clear]");
+        let negate = document.querySelector("._action[action=negate]")
+        let point = document.querySelector("._action[action=point]")
+
+        number.forEach(function (elem) {
+            let n = elem.innerText;
+            elem.onclick = function (event) { return result.value = result.value + n; };
+        });
+
+        let buffer = [];
+
+        let evaluate = function (buffer) {
+            let secondArgument = buffer.pop().value;
+            let operator = buffer.pop().value;
+            let firstArgument = buffer.pop().value;
+
+            if (operator === "plus") {
+                return firstArgument + secondArgument;
+            }
+            else if (operator === "minus") {
+                return firstArgument - secondArgument;
+            }
+            else if (operator === "multiplication") {
+                return firstArgument * secondArgument;
+            }
+            else if (operator === "divide") {
+                return firstArgument / secondArgument;
+            }
+            else if (operator === "percent") {
+                return firstArgument % secondArgument;
+            }
+        };
+
+        let opCallback = function (actionName) {
+            return function (event) {
+                if (buffer && buffer.length) {
+                    buffer.push({ type: "value", value: parseFloat(result_1.value, 10) });
+
+                    let result_1 = evaluate(buffer);
+                    buffer.push({ type: "value", value: result_1 });
+                    buffer.push({ type: "action", value: actionName });
+                    result_1.value = "";
+                }
+                else {
+                    buffer.push({ type: "value", value: parseFloat(result.value, 10) });
+                    buffer.push({ type: "action", value: actionName });
+                    result.value = "";
+                }
+            };
+        };
+
+        for (let i = 0, mathAction = ["plus", "minus", "multiplication", "divide", "percent"]; i < mathAction.length; i++) {
+            let actionName = mathAction[i];
+            mathOperator = document.querySelector("._action[action=" + actionName + "]")
+            mathOperator.onclick = opCallback(actionName);
+        }
+
+        equality.onclick = function (event) {
+            buffer.push({ type: "value", value: parseFloat(result.value, 10) });
+            result.value = evaluate(buffer).toString();
+        };
+
+        clear.onclick = function (event) {
+            result.value = "";
+            while (buffer.length)
+                buffer.pop();
+        };
+
+        negate.onclick = function (event) {
+            return result.value = -parseFloat(result.value, 10);
+        };
+        point.onclick = function (event) {
+            return result.value = parseFloat(result.value) + '.';
+        };
+    </script>
+</body>
+
+</html>

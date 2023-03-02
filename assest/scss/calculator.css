@@ -1,0 +1,409 @@
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*____________________________________________________________
+# Container
+____________________________________________________________*/
+.container {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(45deg, #FBCA88, #EF69AD);
+}
+
+/*____________________________________________________________
+## Dark Button
+____________________________________________________________*/
+.darkButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  background-color: #f2f3f7;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.darkButton__indicator {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50px;
+  background-color: #facf6f;
+  transition: all 0.3s;
+}
+
+.darkButton.darkButton_dark {
+  background-color: #283245;
+}
+
+.darkButton.darkButton_dark .darkButton__indicator {
+  left: 26px;
+  background-color: #f2f3f7;
+}
+
+.container.container_dark {
+  background: linear-gradient(45deg, #476892, #59355D);
+}
+
+.container.container_dark .calculator {
+  background-color: #283245;
+}
+
+.container.container_dark .calculator .inputWrap__result {
+  color: #f2f3f7;
+}
+
+.container.container_dark .calculator .button {
+  background-color: #283245;
+  color: #f2f3f7;
+  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.2), -6px -6px 10px -1px rgba(255, 255, 255, 0.05);
+}
+
+.container.container_dark .calculator .button[action=clear] {
+  color: #a9aeb3;
+}
+
+.container.container_dark .calculator .button[action=negate] {
+  background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/negate_dark.png");
+}
+
+.container.container_dark .calculator .button[action=percent] {
+  background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/percent_dark.png");
+}
+
+.container.container_dark .calculator .button:active {
+  box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2), inset -4px -4px 6px -1px rgba(255, 255, 255, 0.05), -0.5px -0.5px 0 rgba(0, 0, 0, 0.1), 0.5px 0.5px 0 rgba(0, 0, 0, 0.15), 0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.01);
+}
+
+/*____________________________________________________________
+## Calculator
+____________________________________________________________*/
+.calculator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 545px;
+  height: 817px;
+  transform: translate(-50%, -50%);
+  border-radius: 50px;
+  background-color: #f2f3f7;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  overflow: hidden;
+}
+
+/*____________________________________________________________
+### Output of Numbers
+____________________________________________________________*/
+.inputWrap {
+  position: absolute;
+  bottom: 683px;
+  width: 100%;
+}
+
+.inputWrap__result {
+  padding: 0 30.6px;
+  width: 100%;
+  height: 100px;
+  text-align: right;
+  font-family: sans-serif;
+  font-size: 90px;
+  color: #000;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+}
+
+/*____________________________________________________________
+### Buttons
+____________________________________________________________*/
+.buttonWrap {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 483.8px;
+}
+
+.buttonWrap__row {
+  width: 100%;
+}
+
+.button {
+  display: block;
+  float: left;
+  margin-left: 30.6px;
+  margin-bottom: 30.6px;
+  width: 98px;
+  height: 98px;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 50px;
+  line-height: 1.9;
+  color: #000;
+  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1), -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 30px;
+  background-repeat: no-repeat;
+  background-size: 35%;
+  background-position: center;
+  background-color: #f2f3f7;
+  cursor: pointer;
+}
+
+.button._double {
+  padding-left: 35px;
+  width: 226.6px;
+  text-align: left;
+}
+
+.button[action=clear] {
+  color: #676d80;
+}
+
+.button[action=negate] {
+  background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/negate.png");
+}
+
+.button[action=percent] {
+  background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/percent.png");
+}
+
+.button[action=divide] {
+  background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/divide.png");
+}
+
+.button[action=multiplication] {
+  background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/multiplication.png");
+}
+
+.button[action=minus] {
+  background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/minus.png");
+}
+
+.button[action=plus] {
+  background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/plus.png");
+}
+
+.button[action=equality] {
+  background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/equality.png");
+}
+
+.button:first-child {
+  margin-left: 0;
+}
+
+.button:active {
+  box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2), inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7), -0.5px -0.5px 0 rgb(255, 255, 255), 0.5px 0.5px 0 rgba(0, 0, 0, 0.15), 0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.01);
+}
+
+/*____________________________________________________________
+# @media
+____________________________________________________________*/
+/*____________________________________________________________
+## @media 545px
+____________________________________________________________*/
+@media screen and (max-width: 545px) {
+  .calculator {
+    width: 414px;
+    height: 736px;
+    border-radius: 0;
+  }
+
+  .inputWrap {
+    bottom: 530px;
+  }
+
+  .inputWrap__result {
+    padding: 0 23.3px;
+    height: auto;
+    font-size: 68.5px;
+  }
+
+  .buttonWrap {
+    width: 368px;
+  }
+
+  .button {
+    margin-left: 23.3px;
+    margin-bottom: 23.3px;
+    width: 74.5px;
+    height: 74.5px;
+    font-size: 38px;
+    border-radius: 22.8px;
+  }
+
+  .button._double {
+    padding-left: 24px;
+    width: 172.3px;
+  }
+}
+
+/*____________________________________________________________
+## @media 375px
+____________________________________________________________*/
+@media screen and (max-width: 375px) {
+  .calculator {
+    width: 100%;
+    height: 667px;
+  }
+
+  .inputWrap {
+    bottom: 470px;
+  }
+
+  .inputWrap__result {
+    padding: 0 20.6px;
+    font-size: 62px;
+  }
+
+  .buttonWrap {
+    width: 333.8px;
+  }
+
+  .button {
+    margin-left: 20.6px;
+    margin-bottom: 20.6px;
+    width: 68px;
+    height: 68px;
+    font-size: 35px;
+    border-radius: 20px;
+  }
+
+  .button._double {
+    padding-left: 24px;
+    width: 156.6px;
+  }
+}
+
+/*____________________________________________________________
+## @media 320px
+____________________________________________________________*/
+@media screen and (max-width: 320px) {
+  .calculator {
+    height: 568px;
+  }
+
+  .inputWrap {
+    bottom: 400px;
+  }
+
+  .inputWrap__result {
+    padding: 0 17.6px;
+    height: auto;
+    font-size: 53px;
+  }
+
+  .buttonWrap {
+    width: 284.8px;
+  }
+
+  .button {
+    margin-left: 17.6px;
+    margin-bottom: 17.6px;
+    width: 58px;
+    height: 58px;
+    font-size: 30px;
+    border-radius: 17px;
+  }
+
+  .button._double {
+    padding-left: 20.5px;
+    width: 133.6px;
+  }
+}
+
+/*____________________________________________________________
+## @media Height 850px
+____________________________________________________________*/
+@media screen and (min-width: 545px) and (max-height: 850px) {
+  .calculator {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
+
+/*____________________________________________________________
+## @media Height 680px
+____________________________________________________________*/
+@media screen and (min-width: 545px) and (max-height: 680px) {
+  .calculator {
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+}
+
+/*____________________________________________________________
+## @media Height 540px
+____________________________________________________________*/
+@media screen and (min-width: 545px) and (max-height: 540px) {
+  .calculator {
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+}
+
+/*____________________________________________________________
+# Social links
+____________________________________________________________*/
+.social {
+  position: fixed;
+  bottom: 0;
+  left: 30px;
+}
+
+.socialList {
+  list-style: none;
+}
+
+.socialList:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 1px;
+  height: 40px;
+  background: #f7e0b5;
+}
+
+.socialList__item {
+  margin-bottom: 10px;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s;
+}
+
+.socialList__item:hover {
+  transform: translateY(-3px);
+}
+
+.socialList__item:hover .socialList__icon {
+  stroke: #7dcbd8;
+}
+
+.socialList__icon {
+  fill: none;
+  stroke: #f7e0b5;
+}
+
+/*# sourceMappingURL=calculator.css.map */
